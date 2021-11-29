@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 
-{% block title %} Giriş Yap {% endblock %}
+{% block title %} Log in!{% endblock %}
 
 {% block content %}
 
@@ -21,8 +21,8 @@
                   <div class="form">
                     <form action="/action_page.php">
                         <div class="mb-3 mt-3">
-                          <label for="email" class="form-label">Email:</label>
-                          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                          <label for="username" class="form-label">Username:</label>
+                          <input type="username" class="form-control" id="username" placeholder="Enter username" name="username">
                         </div>
                         <div class="mb-3">
                           <label for="pwd" class="form-label">Password:</label>
@@ -36,14 +36,9 @@
                         </div>
                         
                         <div class="col-md-7">
-                            
-                            <span class="me-3">Don't have an account yet?</span>
-                            <button class="btn btn-outline-secondary" type="submit">Sign Up!
-                                <a href="/register"></a>
-                            </button>
-
+                          <span class="me-3">Don't have an account yet?</span>
+                          <a href="/register" class="btn btn-outline-secondary">Sign Up! </a>
                         </div>
-                        
                       </form>
                   </div>
                 </div>
