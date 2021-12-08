@@ -7,7 +7,7 @@ pages = Blueprint('pages', __name__,
 # Homepage
 @pages.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', signed_in=True)
 
 
 # Profile Details Page
