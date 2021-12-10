@@ -13,59 +13,59 @@ def index():
 # Profile Details Page
 @pages.route('/<username>')
 def profile(username):
-    return render_template('profile.html')
+    return render_template('profile.html', profile='me', signed_in=True)
 
 
 # # Edit Profile Page
-@pages.route('/<username>/edit')
+@ pages.route('/<username>/edit')
 def edit_profile(username):
     return render_template('edit_profile.html')
 
 
 # # Change Password Page
-@pages.route('/<username>/change_password')
+@ pages.route('/<username>/change_password')
 def change_password(username):
     return render_template('change_password.html')
 
 
 # Search Page
-@pages.route('/search_results')
+@ pages.route('/search_results')
 def search_results():
     return render_template('search_results.html')
 
 
 # Add Book
-@pages.route('/add_book')
+@ pages.route('/add_book')
 def add_book():
     return render_template('add_book.html')
 
 
 # Book Details Page
-@pages.route('/<bookname>')
-def book(bookname):
+@ pages.route('/book/<isbn>')
+def book(isbn):
     return render_template('book.html')
 
 
 # Random Book Page
-@pages.route('/random_book')
+@ pages.route('/random_book')
 def random_book():
     return render_template('book.html')
 
 
 # Login Page
-@pages.route('/login')
+@ pages.route('/login')
 def login():
     return render_template('login.html')
 
 
 # Register Page
-@pages.route('/register')
+@ pages.route('/register')
 def register():
     return render_template('register.html')
 
 
 # Logout Page
-@pages.route('/logout')
+@ pages.route('/logout')
 def logout():
     return redirect(url_for('pages.index'))
 
