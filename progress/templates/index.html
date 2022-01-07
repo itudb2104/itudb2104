@@ -1,0 +1,324 @@
+{% extends 'base.html' %}
+
+{% block title %} ITUREADS {% endblock %}
+
+{% block content %}
+
+<section class="bg-light">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg">
+                <div class="row pt-5">
+                    <div class="pt-3 text-center">
+                        <h4>Recently Added Books</h2>
+                    </div>
+                </div>
+                <div class="container pt-2 pb-5 my-10 bg-light text-dark">
+                    <div class="row">
+                        <!-- Carousel -->
+                        <div id="recently-added" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
+                            <!-- Indicators/dots -->
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#recently-added" data-bs-slide-to="0"
+                                    class="active bg-dark"></button>
+                                <button type="button" data-bs-target="#recently-added" data-bs-slide-to="1"
+                                    class="bg-dark"></button>
+                                <button type="button" data-bs-target="#recently-added" data-bs-slide-to="2"
+                                    class="bg-dark"></button>
+                            </div>
+
+                            <!-- The slideshow/carousel -->
+                            <div class="carousel-inner ">
+                                <div class="carousel-item active">
+                                    <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
+                                        <div class="pb-5">
+                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                                alt="Los Angeles" class="img-fluid pb-5">
+                                        </div>
+                                        <div class="row carousel-caption pt-5 text-dark ">
+                                            <a class="btn" href="/book/1401308775">
+                                                <h5>Dead Poets Society</h5>
+                                            </a>
+                                            <p>N.H. Kleinbaum</p>
+                                            <p>8.10</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item ">
+                                    <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
+                                        <div class="pb-5">
+                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                                alt="Los Angeles" class="img-fluid pb-5">
+                                        </div>
+                                        <div class="row carousel-caption pt-5 text-dark ">
+                                            <a class="btn" href="/book/1401308775">
+                                                <h5>Dead Poets Society</h5>
+                                            </a>
+                                            <p>N.H. Kleinbaum</p>
+                                            <p>8.10</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
+                                        <div class="pb-5">
+                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                                alt="Los Angeles" class="img-fluid pb-5">
+                                        </div>
+                                        <div class="row carousel-caption pt-5 text-dark ">
+                                            <a class="btn" href="/book/1401308775">
+                                                <h5>Dead Poets Society</h5>
+                                            </a>
+                                            <p>N.H. Kleinbaum</p>
+                                            <p>8.10</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Left and right controls/icons -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#recently-added"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon text-dark"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#recently-added"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row pt-5">
+                    <div class="pt-3 text-center">
+                        <h4>Top Rated Books</h2>
+                    </div>
+                </div>
+                <div class="container pt-2 pb-5 my-10 bg-light text-dark">
+                    <div class="row">
+                        <!-- Carousel -->
+                        <div id="top-rated" class="carousel carousel-dark slide" data-bs-ride="carousel">
+
+                            <!-- Indicators/dots -->
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#top-rated" data-bs-slide-to="0"
+                                    class="active bg-dark"></button>
+                                <button type="button" data-bs-target="#top-rated" data-bs-slide-to="1"
+                                    class="bg-dark"></button>
+                                <button type="button" data-bs-target="#top-rated" data-bs-slide-to="2"
+                                    class="bg-dark"></button>
+                            </div>
+
+                            <!-- The slideshow/carousel -->
+                            <div class="carousel-inner ">
+                                <div class="carousel-item active">
+                                    <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
+                                        <div class="pb-5">
+                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                                alt="Los Angeles" class="img-fluid pb-5">
+                                        </div>
+                                        <div class="row carousel-caption pt-5 text-dark ">
+                                            <a class="btn" href="#">
+                                                <h5>Dead Poets Society</h5>
+                                            </a>
+                                            <p>N.H. Kleinbaum</p>
+                                            <p>8.10</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item ">
+                                    <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
+                                        <div class="pb-5">
+                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                                alt="Los Angeles" class="img-fluid pb-5">
+                                        </div>
+                                        <div class="row carousel-caption pt-5 text-dark ">
+                                            <a class="btn" href="#">
+                                                <h5>Dead Poets Society</h5>
+                                            </a>
+                                            <p>N.H. Kleinbaum</p>
+                                            <p>8.10</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
+                                        <div class="pb-5">
+                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                                alt="Los Angeles" class="img-fluid pb-5">
+                                        </div>
+                                        <div class="row carousel-caption pt-5 text-dark ">
+                                            <a class="btn" href="#">
+                                                <h5>Dead Poets Society</h5>
+                                            </a>
+                                            <p>N.H. Kleinbaum</p>
+                                            <p>8.10</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Left and right controls/icons -->
+                            <button class="carousel-control-prev" type="button" data-bs-target="#top-rated"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon text-dark"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#top-rated"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</section>
+
+<!---
+<section class="bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="my-5">
+                <h1>ITUREADS</h1>
+            </div>
+        </div>
+        <h2 class="mb-3">Recently Added Books</h2>
+
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-sm-6 col-lg-3 bg-danger">
+                    <div class="border border-3 my-3">
+                        <div class="d-flex justify-content-center border border-3">
+                            <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                alt="">
+                        </div>
+                        <div class="text-center mb-1">
+                            <h4>Dead Poets Society</h4>
+                            <p>N.H Kleinbaum</p>
+                            <p>8/10</p>
+                            <a class="btn btn-secondary" href="#">Show Details</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 bg-danger">
+                    <div class="border border-3 my-3">
+                        <div class="d-flex justify-content-center border border-3">
+                            <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                alt="">
+                        </div>
+                        <div class="text-center mb-1">
+                            <h4>Dead Poets Society</h4>
+                            <p>N.H Kleinbaum</p>
+                            <p>8/10</p>
+                            <a class="btn btn-secondary" href="#">Show Details</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 bg-danger">
+                    <div class="border border-3 my-3">
+                        <div class="d-flex justify-content-center border border-3">
+                            <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                alt="">
+                        </div>
+                        <div class="text-center mb-1">
+                            <h4>Dead Poets Society</h4>
+                            <p>N.H Kleinbaum</p>
+                            <p>8/10</p>
+                            <a class="btn btn-secondary" href="#">Show Details</a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3 bg-danger">
+                    <div class="border border-3 my-3">
+                        <div class="d-flex justify-content-center border border-3">
+                            <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                alt="">
+                        </div>
+                        <div class="text-center mb-1">
+                            <h4>Dead Poets Society</h4>
+                            <p>N.H Kleinbaum</p>
+                            <p>8/10</p>
+                            <a class="btn btn-secondary" href="#">Show Details</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <h2 class="mt-5 mb-1">Top Rated Books</h2>
+            <div class="py-3">
+                <div class="row">
+                    <div class="col-sm-6 col-lg-3 bg-primary">
+                        <div class="border border-3 my-3">
+                            <div class="d-flex justify-content-center border border-3">
+                                <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                    alt="">
+                            </div>
+                            <div class="text-center mb-1">
+                                <h4>Dead Poets Society</h4>
+                                <p>N.H Kleinbaum</p>
+                                <p>8/10</p>
+                                <a class="btn btn-secondary" href="#">Show Details</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 bg-primary">
+                        <div class="border border-3 my-3">
+                            <div class="d-flex justify-content-center border border-3">
+                                <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                    alt="">
+                            </div>
+                            <div class="text-center mb-1">
+                                <h4>Dead Poets Society</h4>
+                                <p>N.H Kleinbaum</p>
+                                <p>8/10</p>
+                                <a class="btn btn-secondary" href="#">Show Details</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 bg-primary">
+                        <div class="border border-3 my-3">
+                            <div class="d-flex justify-content-center border border-3">
+                                <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                    alt="">
+                            </div>
+                            <div class="text-center mb-1">
+                                <h4>Dead Poets Society</h4>
+                                <p>N.H Kleinbaum</p>
+                                <p>8/10</p>
+                                <a class="btn btn-secondary" href="#">Show Details</a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 bg-primary">
+                        <div class="border border-3 my-3">
+                            <div class="d-flex justify-content-center border border-3">
+                                <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
+                                    alt="">
+                            </div>
+                            <div class="text-center mb-1">
+                                <h4>Dead Poets Society</h4>
+                                <p>N.H Kleinbaum</p>
+                                <p>8/10</p>
+                                <a class="btn btn-secondary" href="#">Show Details</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+-->
+{% endblock %}
