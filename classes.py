@@ -20,14 +20,9 @@ class Evaluation:
 
 
 class Library:
-    def __init__(self, id, userID, bookID):
+    def __init__(self, id, userID, bookID, source):
         self.id = id
         self.userID = userID
         self.bookID = bookID
-
-
-class Wishlist:
-    def __init__(self, id, userID, bookID):
-        self.id = id
-        self.userID = userID
-        self.bookID = bookID
+        self.adding_date = datetime.datetime.now()
+        self.source = source
