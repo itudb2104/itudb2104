@@ -83,21 +83,21 @@
 <section>
     <div class="container p-3">
         <ul class="evaluations">
-            {% for evaluation in evaluations %}
+            {% for i in range(length) %}
             <div class="evaluation border border-3 p-3">
                 <div>
-                    <h5 class="text-dark"> A user says:</h5>
+                    <h5 class="text-dark"> {{ commenters[i][1] }} says:</h5>
                 </div>
                 <div class="rating">
-                    {% for k in range(evaluation[4]) %}
+                    {% for k in range(evaluations[i][4]) %}
                     <span style="color: orange;" class="fa fa-star checked"></span>
                     {% endfor %}
-                    {% for k in range(5- evaluation[4] ) %}
+                    {% for k in range(5- evaluations[i][4] ) %}
                     <span class="fa fa-star"></span>
                     {% endfor %}
                 </div>
                 <div class="comment">
-                    {{ evaluation[3] }}
+                    {{ evaluations[i][3] }}
                 </div>
             </div>
             {% endfor %}
