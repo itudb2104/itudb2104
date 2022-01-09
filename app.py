@@ -8,7 +8,6 @@ app.config['SECRET_KEY'] = 'secret!'
 
 app.register_blueprint(blueprint=pages, url_prefix='/')
 
-
 if __name__ == '__main__':
     db_init.create_tables()
     app.run(debug=True, port=8080)

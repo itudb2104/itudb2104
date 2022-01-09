@@ -474,7 +474,8 @@ def evaluate_book(user_id, book_id):
 def user_evaluations(username):
     if 'username' in session:
         user = db.get_user_by_username(session['username'])
-        evaluations = db.get_all_evaluations_by_user_id(user_id=user[0])
+        profile=db.get_user_by_username(username)
+        evaluations = db.get_all_evaluations_by_user_id(user_id=profile[0])
         books = [db.get_book_by_id(e[1]) for e in evaluations]
         return render_template('evaluations.html', evaluations=evaluations, user=user, books=books, length=len(evaluations))
     return redirect(url_for('pages.index'))
@@ -485,7 +486,8 @@ def user_evaluations(username):
 def user_library(username):
     if 'username' in session:
         user = db.get_user_by_username(session['username'])
-        library = db.get_all_library_by_user_id(user_id=user[0])
+        profile=db.get_user_by_username(username)
+        library = db.get_all_library_by_user_id(user_id=profile[0])
         books = [db.get_book_by_id(e[2]) for e in library]
         categories = [db.get_category_by_id(b[10])[1] for b in books]
         authors = [db.get_author_by_id(b[6])[1] for b in books]
