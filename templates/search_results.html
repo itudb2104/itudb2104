@@ -5,4 +5,53 @@
 
 {% block content %}
 
+<section>
+    <div class="container py-5">
+        <h2 class="text-dark py-5">Search Results</h2>
+        <h2 class="text-dark">Books</h2>
+        <div class="book-results d-flex flex-lg-row flex-column justify-content-lg-between justify-content-center">
+            {% for book in book_results %}
+            <a href="/book/{{ book[7] }}" style="width: 100%;"
+                class="book-result text-center d-flex flex-column align-items-center justify-content-center text-decoration-none"
+                style="max-width: 200px;">
+                <div class="book-result-image">
+                    <img style="width:99px;height: 176px;" src="{{ book[9] }}" alt="">
+                </div>
+                <div class="book-result-info">
+                    <h6 class="text-dark py-2">{{ book[1] }}</h6>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <h2 class="text-dark">Authors</h2>
+        <div class="book-results d-flex flex-lg-row flex-column justify-content-lg-between justify-content-center">
+            {% for author in author_results %}
+            <a style="width: 100%;"
+                class="book-result text-center d-flex flex-column align-items-center justify-content-center"
+                style="max-width: 200px;">
+                <div class="book-result-image">
+                    <img style="width:99px;height: 176px;" src="{{ author[5] }}" alt="">
+                </div>
+                <div class="book-result-info">
+                    <h6 class="text-dark py-2">{{ author[1] }}</h6>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        <h2 class="text-dark">Users</h2>
+        <div class="book-results d-flex flex-lg-row flex-column justify-content-lg-between justify-content-center">
+            {% for profile in user_results %}
+            <a style="width: 100%;"
+                class="book-result text-center d-flex flex-column align-items-center justify-content-lg-center justify-content-between"
+                style="max-width: 200px;">
+                <div class="book-result-info">
+                    <a href="/profile/{{ profile[2] }}">
+                        <h6 class="text-dark py-2">{{ profile[1] }}</h6>
+                    </a>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+</section>
+
 {% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Yazar adı {% endblock %}
+
+{% block content %}
+section class="mb-5 p-5">
+<div class="row p-5">
+    <div class="col-md-6 mb-4 mb-md-0">
+        <div class="mdb-lightbox">
+            <div class="row product-gallery mx-1">
+                <div class="col-12 mb-0 text-center">
+                    <img src={{ author[4] }} class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <h5>{{ author[1] }}</h5>
+        <p class="pt-1">
+            {{ author[3] }}
+        </p>
+        <div class="table-responsive">
+            <table class="table table-sm table-borderless mb-0">
+                <tbody>
+                    <tr>
+                        <th class="pl-0 w-25" scope="row"><strong>Birthday</strong></th>
+                        <td>{{ author[2] }}</td>
+                    </tr>
+                    <tr>
+                        <th class="pl-0 w-25" scope="row"><strong>Number of Books</strong></th>
+                        <td>{{ author[1] }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+    </div>
+</div>
+</section>
+{% endblock %}

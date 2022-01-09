@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Evaluate Book {% endblock %}
+
+{% block content %}
+
+<section class="mb-5 p-5">
+    <div class="row p-5">
+        <div class="col-md-6 mb-4 mb-md-0">
+            <div class="mdb-lightbox">
+                <div class="row product-gallery mx-1">
+                    <div class="col-12 mb-0 text-center">
+                        <img src={{ book[9] }} class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h5>{{ book[1] }}</h5>
+            <div class="table-responsive">
+                <table class="table table-sm table-borderless mb-0">
+                    <tbody>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Author</strong></th>
+                            <td>{{ author }}</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Year</strong></th>
+                            <td>{{ book[5] }}</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Category</strong></th>
+                            <td>{{ category }}</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Number of Pages</strong></th>
+                            <td>{{ book[3] }}</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Publisher</strong></th>
+                            <td>{{ publisher }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <hr>
+            <div>
+                <form action="/evaluate-book/{{user[0]}}/{{book[0]}}" method="POST"
+                    class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="form-group p-1">
+                        <label for="text">Comment</label>
+                        <textarea class="form-control" name="text" cols="50" rows="3">
+                        </textarea>
+                    </div>
+                    <div class="p-1">
+                        <label for="text">Rate</label>
+                        <input class="form-control" type="number" min="0" max="5" name="vote" value="5">
+                    </div>
+                    <div class="p-1">
+                        <button class="btn btn-warning" type="submit">Evaluate</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

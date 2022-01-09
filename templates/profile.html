@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 
-{% block title %} ITUREADS: arikanelif {% endblock %}
+{% block title %} ITUREADS: {{ profile[2] }} {% endblock %}
 
 {% block content %}
 
@@ -10,40 +10,38 @@
         <div class="row align-items-center basef">
             <div class="col-lg-6">
                 <div class="about-avatar">
-                    <img class="img-fluid w-50"
+                    <img class="img-fluid w-50" src="{{ url_for('static', filename='pp.png') }}" title="" alt="">
+                    <!-- <img class="img-fluid w-50"
                         src="https://images.unsplash.com/photo-1485893086445-ed75865251e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
-                        title="" alt="">
+                        title="" alt=""> -->
                 </div>
             </div>
             <div class="col-lg-6">
-                {% if profile == 'me' %}
-                <button class="follow-unfollow btn btn-primary">
-                    Edit Profile
-                </button>
-                {% elif profile == 'yes' %}
-                <button class="follow-unfollow btn btn-danger">
+                {% if is_following == 0 %}
+                {% elif is_following == 1 %}
+                <a href="/unfollow/{{ profile[2] }}" class="follow-unfollow btn btn-danger">
                     Unfollow
-                </button>
-                {% elif profile == 'no' %}
-                <button class="follow-unfollow btn btn-secondary">
+                </a>
+                {% elif is_following == -1 %}
+                <a href="/follow/{{ profile[2] }}" class="follow-unfollow btn btn-secondary">
                     Follow
-                </button>
+                </a>
                 {% endif %}
                 <div class="about-text go-to">
-                    <h3 class=" dark-color">Elif Arıkan</h3>
-                    <h6 class="theme-color lead">Job Title If User Wants</h6>
-                    <p>This is the biography part. User can hide age and email informations.</p>
+                    <h3 class=" dark-color">{{ profile[1] }}</h3>
+                    <h6 class="theme-color lead">Reader</h6>
+                    <p>This is the biography part.</p>
                     <div class="row about-list">
                         <div class="col-md-6">
                             <div class="media">
                                 <label>Age</label>
-                                <p>22</p>
+                                <p>{{ age }}</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="media">
                                 <label>E-mail</label>
-                                <p>arikanelif@bookmail.com</p>
+                                <p>{{ profile[4] }}</p>
                             </div>
                         </div>
                     </div>
@@ -54,26 +52,30 @@
             <div class="row">
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
-                        <h6 class="count h2" data-to="500" data-speed="500">500</h6>
-                        <p class="m-0px font-w-600">Book Readed</p>
+                        <h6 class="count h2" data-to="500" data-speed="500">{{ evaluation_count }}</h6>
+                        <a href="/evaluations/{{ profile[2] }}"
+                            class="m-0px font-w-600 text-decoration-none text-danger">Book Evaluated</a>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
-                        <h6 class="count h2" data-to="150" data-speed="150">150</h6>
-                        <p class="m-0px font-w-600">Booklist</p>
+                        <h6 class="count h2" data-to="150" data-speed="150">{{ library_count }}</h6>
+                        <a href="/library/{{ profile[2] }}"
+                            class="m-0px font-w-600 text-decoration-none text-danger">Booklist</a>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
-                        <h6 class="count h2" data-to="850" data-speed="850">850</h6>
-                        <p class="m-0px font-w-600">Followers</p>
+                        <h6 class="count h2" data-to="850" data-speed="850">{{ follower_count }}</h6>
+                        <a href="/followers/{{ profile[2] }}"
+                            class="m-0px font-w-600 text-decoration-none text-danger">Followers</a>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
-                        <h6 class="count h2" data-to="190" data-speed="190">190</h6>
-                        <p class="m-0px font-w-600">Followings</p>
+                        <h6 class="count h2" data-to="190" data-speed="190">{{ followed_count }}</h6>
+                        <a href="/followings/{{ profile[2] }}"
+                            class="m-0px font-w-600 text-decoration-none text-danger">Followings</a>
                     </div>
                 </div>
             </div>

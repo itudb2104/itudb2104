@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Donate Book {% endblock %}
+
+{% block content %}
+
+<section>
+    <div class="container pt-5">
+        <div class="row pt-5">
+            <div class="col-24">
+                <table class="table table-image">
+                    <thead>
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Book</th>
+                            <th scope="col">Donate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in range(length) %}
+                        <tr>
+                            <td>
+                                <img class="img-fluid w-50" src={{ books[i][9] }} alt="">
+                            </td>
+                            <td>{{ books[i][1] }}</td>
+                            <td>
+                                <a class="btn btn-warning" href="">
+                                    Donate
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center" aria-label="...">
+            <ul class="pagination pagination-lg">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="page-item"><a class="page-link" href="#">6</a></li>
+                <li class="page-item"><a class="page-link" href="#">7</a></li>
+                <li class="page-item"><a class="page-link" href="#">8</a></li>
+                <li class="page-item"><a class="page-link" href="#">9</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

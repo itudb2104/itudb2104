@@ -10,7 +10,7 @@
             <div class="col-lg">
                 <div class="row pt-5">
                     <div class="pt-3 text-center">
-                        <h4>Recently Added Books</h2>
+                        <h2 class="text-dark">Editor's Suggestions</h2>
                     </div>
                 </div>
                 <div class="container pt-2 pb-5 my-10 bg-light text-dark">
@@ -30,51 +30,45 @@
 
                             <!-- The slideshow/carousel -->
                             <div class="carousel-inner ">
+                                {% for i in range(3) %}
+                                {% if i == 0 %}
                                 <div class="carousel-item active">
                                     <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
                                         <div class="pb-5">
-                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                                alt="Los Angeles" class="img-fluid pb-5">
+                                            <a href="/book/{{ editor_suggestions[i][7] }}">
+                                                <img style="height:50vh;" src={{ editor_suggestions[i][9] }}
+                                                    alt="Los Angeles" class="img-fluid pb-4">
+                                            </a>
                                         </div>
                                         <div class="row carousel-caption pt-5 text-dark ">
-                                            <a class="btn" href="/book/1401308775">
-                                                <h5>Dead Poets Society</h5>
+                                            <a class="btn" href="/book/{{ editor_suggestions[i][7] }}">
+                                                <h5>{{ editor_suggestions[i][1] }}</h5>
                                             </a>
-                                            <p>N.H. Kleinbaum</p>
-                                            <p>8.10</p>
+                                            <p>{{ e_authors[i] }}</p>
+                                            <p>{{ editor_suggestions[i][2] }} / 5</p>
                                         </div>
                                     </div>
                                 </div>
+                                {% else %}
                                 <div class="carousel-item ">
                                     <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
                                         <div class="pb-5">
-                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                                alt="Los Angeles" class="img-fluid pb-5">
+                                            <a href="/book/{{ editor_suggestions[i][7] }}">
+                                                <img style="height:50vh;" src={{ editor_suggestions[i][9] }}
+                                                    alt="Los Angeles" class="img-fluid pb-4">
+                                            </a>
                                         </div>
                                         <div class="row carousel-caption pt-5 text-dark ">
-                                            <a class="btn" href="/book/1401308775">
-                                                <h5>Dead Poets Society</h5>
+                                            <a class="btn" href="/book/{{ editor_suggestions[i][7] }}">
+                                                <h5>{{ editor_suggestions[i][1] }}</h5>
                                             </a>
-                                            <p>N.H. Kleinbaum</p>
-                                            <p>8.10</p>
+                                            <p>{{ e_authors[i] }}</p>
+                                            <p>{{ editor_suggestions[i][2] }} / 5</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="carousel-item">
-                                    <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
-                                        <div class="pb-5">
-                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                                alt="Los Angeles" class="img-fluid pb-5">
-                                        </div>
-                                        <div class="row carousel-caption pt-5 text-dark ">
-                                            <a class="btn" href="/book/1401308775">
-                                                <h5>Dead Poets Society</h5>
-                                            </a>
-                                            <p>N.H. Kleinbaum</p>
-                                            <p>8.10</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% endif %}
+                                {% endfor %}
                             </div>
 
                             <!-- Left and right controls/icons -->
@@ -93,7 +87,7 @@
             <div class="col">
                 <div class="row pt-5">
                     <div class="pt-3 text-center">
-                        <h4>Top Rated Books</h2>
+                        <h2 class="text-dark">Top Rated Books</h2>
                     </div>
                 </div>
                 <div class="container pt-2 pb-5 my-10 bg-light text-dark">
@@ -113,51 +107,47 @@
 
                             <!-- The slideshow/carousel -->
                             <div class="carousel-inner ">
+                                {% for i,book in top_3_books.items() %}
+                                {% if i == 0 %}
                                 <div class="carousel-item active">
                                     <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
                                         <div class="pb-5">
-                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                                alt="Los Angeles" class="img-fluid pb-5">
+                                            <a href="/book/{{book[7]}}">
+                                                <img style="height:50vh;" src={{ book[9] }} alt="Los Angeles"
+                                                    class="img-fluid pb-5">
+                                            </a>
                                         </div>
                                         <div class="row carousel-caption pt-5 text-dark ">
                                             <a class="btn" href="#">
-                                                <h5>Dead Poets Society</h5>
+                                                <h5 style="text-overflow: ellipsis;overflow: hidden;display: block;">{{
+                                                    book[1] }}</h5>
                                             </a>
-                                            <p>N.H. Kleinbaum</p>
-                                            <p>8.10</p>
+                                            <p>{{ authors[i] }}</p>
+                                            <p>{{ book[2] }} / 5</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="carousel-item ">
-                                    <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
-                                        <div class="pb-5">
-                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                                alt="Los Angeles" class="img-fluid pb-5">
-                                        </div>
-                                        <div class="row carousel-caption pt-5 text-dark ">
-                                            <a class="btn" href="#">
-                                                <h5>Dead Poets Society</h5>
-                                            </a>
-                                            <p>N.H. Kleinbaum</p>
-                                            <p>8.10</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% else %}
                                 <div class="carousel-item">
                                     <div class="d-flex justify-content-center align-items-center pb-5 mb-5">
                                         <div class="pb-5">
-                                            <img src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                                alt="Los Angeles" class="img-fluid pb-5">
+                                            <a href="/book/{{ book[7] }}">
+                                                <img style="height:50vh;" src={{ book[9] }} alt="Los Angeles"
+                                                    class="img-fluid pb-5">
+                                            </a>
                                         </div>
                                         <div class="row carousel-caption pt-5 text-dark ">
                                             <a class="btn" href="#">
-                                                <h5>Dead Poets Society</h5>
+                                                <h5>{{ book[1] }}</h5>
                                             </a>
-                                            <p>N.H. Kleinbaum</p>
-                                            <p>8.10</p>
+                                            <p>{{ authors[i] }}</p>
+                                            <p>{{ book[2] }} / 5</p>
                                         </div>
                                     </div>
                                 </div>
+                                {% endif %}
+                                {% endfor %}
+
                             </div>
 
                             <!-- Left and right controls/icons -->
@@ -174,151 +164,17 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-
-</section>
-
-<!---
-<section class="bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="my-5">
-                <h1>ITUREADS</h1>
-            </div>
-        </div>
-        <h2 class="mb-3">Recently Added Books</h2>
-
-        <div class="container py-3">
-            <div class="row">
-                <div class="col-sm-6 col-lg-3 bg-danger">
-                    <div class="border border-3 my-3">
-                        <div class="d-flex justify-content-center border border-3">
-                            <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                alt="">
-                        </div>
-                        <div class="text-center mb-1">
-                            <h4>Dead Poets Society</h4>
-                            <p>N.H Kleinbaum</p>
-                            <p>8/10</p>
-                            <a class="btn btn-secondary" href="#">Show Details</a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 bg-danger">
-                    <div class="border border-3 my-3">
-                        <div class="d-flex justify-content-center border border-3">
-                            <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                alt="">
-                        </div>
-                        <div class="text-center mb-1">
-                            <h4>Dead Poets Society</h4>
-                            <p>N.H Kleinbaum</p>
-                            <p>8/10</p>
-                            <a class="btn btn-secondary" href="#">Show Details</a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 bg-danger">
-                    <div class="border border-3 my-3">
-                        <div class="d-flex justify-content-center border border-3">
-                            <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                alt="">
-                        </div>
-                        <div class="text-center mb-1">
-                            <h4>Dead Poets Society</h4>
-                            <p>N.H Kleinbaum</p>
-                            <p>8/10</p>
-                            <a class="btn btn-secondary" href="#">Show Details</a>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 bg-danger">
-                    <div class="border border-3 my-3">
-                        <div class="d-flex justify-content-center border border-3">
-                            <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                alt="">
-                        </div>
-                        <div class="text-center mb-1">
-                            <h4>Dead Poets Society</h4>
-                            <p>N.H Kleinbaum</p>
-                            <p>8/10</p>
-                            <a class="btn btn-secondary" href="#">Show Details</a>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <h2 class="mt-5 mb-1">Top Rated Books</h2>
-            <div class="py-3">
-                <div class="row">
-                    <div class="col-sm-6 col-lg-3 bg-primary">
-                        <div class="border border-3 my-3">
-                            <div class="d-flex justify-content-center border border-3">
-                                <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                    alt="">
-                            </div>
-                            <div class="text-center mb-1">
-                                <h4>Dead Poets Society</h4>
-                                <p>N.H Kleinbaum</p>
-                                <p>8/10</p>
-                                <a class="btn btn-secondary" href="#">Show Details</a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 bg-primary">
-                        <div class="border border-3 my-3">
-                            <div class="d-flex justify-content-center border border-3">
-                                <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                    alt="">
-                            </div>
-                            <div class="text-center mb-1">
-                                <h4>Dead Poets Society</h4>
-                                <p>N.H Kleinbaum</p>
-                                <p>8/10</p>
-                                <a class="btn btn-secondary" href="#">Show Details</a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 bg-primary">
-                        <div class="border border-3 my-3">
-                            <div class="d-flex justify-content-center border border-3">
-                                <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                    alt="">
-                            </div>
-                            <div class="text-center mb-1">
-                                <h4>Dead Poets Society</h4>
-                                <p>N.H Kleinbaum</p>
-                                <p>8/10</p>
-                                <a class="btn btn-secondary" href="#">Show Details</a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-3 bg-primary">
-                        <div class="border border-3 my-3">
-                            <div class="d-flex justify-content-center border border-3">
-                                <img class="img-fluid p-3 " src="http://covers.openlibrary.org/b/isbn/1401308775-M.jpg"
-                                    alt="">
-                            </div>
-                            <div class="text-center mb-1">
-                                <h4>Dead Poets Society</h4>
-                                <p>N.H Kleinbaum</p>
-                                <p>8/10</p>
-                                <a class="btn btn-secondary" href="#">Show Details</a>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+        <div class="categories text-center">
+            <h2 class="pb-3 text-dark">Categories</h2>
+            <div class="d-inline category-list">
+                {% for category in categories %}
+                <a class="m-1 btn btn-danger btn-lg" href="/category/{{ category[0] }}">
+                    {{ category[1] }}
+                </a>
+                {% endfor %}
             </div>
         </div>
     </div>
 </section>
--->
+
 {% endblock %}

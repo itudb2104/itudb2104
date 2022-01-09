@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 
-{% block title %} Kitap Adı Falan {% endblock %}
+{% block title %} {{ book[1] }} {% endblock %}
 
 {% block content %}
 
@@ -12,137 +12,127 @@
             <div class="mdb-lightbox">
                 <div class="row product-gallery mx-1">
                     <div class="col-12 mb-0 text-center">
-                        <img src="http://covers.openlibrary.org/b/isbn/1401308775-L.jpg" class="img-fluid">
+                        <img src={{ book[9] }} class="img-fluid">
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-md-6">
-            <h5>Dead Poets Society</h5>
-            <h5 class="rating">
-                <div class="container d-flex justify-content-center mt-5">
-                    <div class="card text-center mb-5">
-                        <div class="circle-image"> </div> <span class="dot"></span> 
-            
-                        <div class="rate bg-success py-3 text-white mt-3">
-                            <h6 class="mb-0">Rate the book!</h6>
-                            <div class="rating"> <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label> <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label> <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label> <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label> </div>
-                            <div class="buttons px-4 mt-0"> <button class="btn btn-warning btn-block rating-submit">Submit</button> </div>
-                        </div>
-                    </div>
-                </div>
-            </h5>
+            <h5>{{ book[1] }}</h5>
+            {% for i in range(rating) %}
+            <span style="color: orange;" class="fa fa-star checked"></span>
+            {% endfor %}
+            {% for i in range(5-rating) %}
+            <span class="fa fa-star"></span>
+            {% endfor %}
             <p class="pt-1">
-                Todd Anderson and his friends at Welton Academy can hardly believe how different life is
-                since their new English professor, the flamboyant John Keating, has challenged them to "make your lives
-                extraordinary! " Inspired by Keating, the boys resurrect the Dead Poets Society--a secret club where,
-                free from the constraints and expectations of school and parents, they let their passions run wild. As
-                Keating turns the boys on to the great words of Byron, Shelley, and Keats, they discover not only the
-                beauty of language, but the importance of making each moment count. But the Dead Poets pledges soon
-                realize that their newfound freedom can have tragic consequences. Can the club and the individuality it
-                inspires survive the pressure from authorities determined to destroy their dreams?
+                {{ description }}
             </p>
             <div class="table-responsive">
                 <table class="table table-sm table-borderless mb-0">
                     <tbody>
                         <tr>
                             <th class="pl-0 w-25" scope="row"><strong>Author</strong></th>
-                            <td>N.H Kleinbaum</td>
+                            <td>{{ author }}</td>
                         </tr>
                         <tr>
                             <th class="pl-0 w-25" scope="row"><strong>Year</strong></th>
-                            <td>1989</td>
+                            <td>{{ book[5] }}</td>
                         </tr>
                         <tr>
                             <th class="pl-0 w-25" scope="row"><strong>Category</strong></th>
-                            <td>Classic</td>
+                            <td>{{ category }}</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Number of Pages</strong></th>
+                            <td>{{ book[3] }}</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Publisher</strong></th>
+                            <td>{{ publisher }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <hr>
+            <div class="d-flex flex-row justify-content-between">
+                {% if is_in_user_library %}
+                <a class="btn btn-primary" href="/remove-from-library/{{ user[0] }}/{{ book[0] }}">Remove from
+                    Library</a>
+                {% else %}
+                <a class="btn btn-primary" href="/add-to-library/{{ user[0] }}/{{ book[0] }}">Add to Library</a>
+                {% endif %}
+
+                {% if not is_evaluated %}
+                <a href="/evaluate-book/{{user[0]}}/{{book[0]}}" class="btn btn-warning">Evaluate this
+                    Book</a>
+                {% endif %}
+
+                {% if is_in_user_requests %}
+                <a class="btn btn-danger" href="/remove-from-requests/{{ user[0] }}/{{ book[0] }}">Remove Request</a>
+                {% else %}
+                <a class="btn btn-danger" href="/add-to-requests/{{ user[0] }}/{{ book[0] }}">Request this Book</a>
+                {% endif %}
+            </div>
         </div>
     </div>
 </section>
 <!--Section: Block Content-->
 
+<section>
+    <div class="container p-3">
+        <ul class="evaluations">
+            {% for evaluation in evaluations %}
+            <div class="evaluation border border-3 p-3">
+                <div>
+                    <h5 class="text-dark"> A user says:</h5>
+                </div>
+                <div class="rating">
+                    {% for k in range(evaluation[4]) %}
+                    <span style="color: orange;" class="fa fa-star checked"></span>
+                    {% endfor %}
+                    {% for k in range(5- evaluation[4] ) %}
+                    <span class="fa fa-star"></span>
+                    {% endfor %}
+                </div>
+                <div class="comment">
+                    {{ evaluation[3] }}
+                </div>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
 <!--Section: Block Content-->
 <section class="text-center">
+    <h2 class="p-4 text-dark">Suggestions You Might Interest</h2>
     <div class="row">
-        <div class="col-md-6 col-lg-3 mb-5">
-            <div class="">
-                <div class="view zoom overlay z-depth-2 rounded">
-                    <div class="mask">
-                        <img class="img-fluid w-50" src="http://covers.openlibrary.org/b/isbn/1401308775-L.jpg">
-                        <div class="mask rgba-black-slight"></div>
-                    </div>
-                    </a>
-                </div>
-                <div class="pt-4">
-                    <h5>Book Suggestion 1</h5>
-                    <h6>
-                        <span class="text-danger mr-1">Subtext 1</span>
-                    </h6>
-                </div>
-
-            </div>
-        </div>
+        {% for i in range(4) %}
 
         <div class="col-md-6 col-lg-3 mb-5">
-            <div class="">
-                <div class="view zoom overlay z-depth-2 rounded">
-                    <div class="mask">
-                        <img class="img-fluid w-50" src="http://covers.openlibrary.org/b/isbn/1401308775-L.jpg">
-                        <div class="mask rgba-black-slight"></div>
-                    </div>
-                    </a>
-                </div>
-                <div class="pt-4">
-                    <h5>Book Suggestion 2</h5>
-                    <h6>
-                        <span class="text-danger mr-1">Subtext 2</span>
-                    </h6>
-                </div>
+            <div class="container">
+                <a href="/book/{{ book_suggestions_4[i][7] }}">
+                    <div class="view zoom overlay z-depth-2 rounded">
+                        <div class="mask">
+                            <img style="height: 40vh auto;" class="img-fluid w-50" src={{ book_suggestions_4[i][9] }}>
+                            <div class="mask rgba-black-slight"></div>
+                        </div>
+                </a>
             </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3 mb-5">
-            <div class="">
-
-                <div class="view zoom overlay z-depth-2 rounded">
-                    <div class="mask">
-                        <img class="img-fluid w-50" src="http://covers.openlibrary.org/b/isbn/1401308775-L.jpg">
-                        <div class="mask rgba-black-slight"></div>
-                    </div>
-                    </a>
-                </div>
-                <div class="pt-4">
-                    <h5>Book Suggestion 3</h5>
-                    <h6>
-                        <span class="text-danger mr-1">Subtext 3</span>
-                    </h6>
-                </div>
+            <div class="pt-4">
+                <h5>{{ book_suggestions_4[i][1] }}</h5>
+                <h6>
+                    <span class="text-danger mr-1">{{ authors_suggestions[i] }}</span>
+                </h6>
             </div>
+            </a>
+            </a>
         </div>
+    </div>
 
-        <div class="col-md-6 col-lg-3 mb-5">
-            <div class="">
-                <div class="view zoom overlay z-depth-2 rounded">
-                    <div class="mask">
-                        <img class="img-fluid w-50" src="http://covers.openlibrary.org/b/isbn/1401308775-L.jpg">
-                        <div class="mask rgba-black-slight"></div>
-                    </div>
-                    </a>
-                </div>
-                <div class="pt-4">
-                    <h5>Book Suggestion 4</h5>
-                    <h6>
-                        <span class="text-danger mr-1">Subtext 4</span>
-                    </h6>
-                </div>
-            </div>
-        </div>
+    {% endfor %}
     </div>
 </section>
 

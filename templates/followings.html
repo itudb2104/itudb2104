@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Followings {% endblock %}
+
+{% block content %}
+
+<section class="p-5">
+    <div class="container p-5">
+        <ul>
+            {% for following in followings %}
+            <li>
+                <a class="text-decoration-none" href="/profile/{{ following[2] }}">{{ following[1] }} - @{{ following[2]
+                    }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+{% endblock %}

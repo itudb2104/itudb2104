@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block title %} Evaluations {% endblock %}
+
+{% block content %}
+
+<section class="p-5">
+    <div class="container p-5">
+        <ul>
+            {% for i in range(length) %}
+            <div class="d-flex flex-column border border-4 p-3 ">
+                <div>
+                    <a class="text-decoration-none" href="/book/{{ books[i][7] }}">
+                        <h4 class="text-dark">{{ books[i][1] }}</h4>
+                    </a>
+                </div>
+                <div>
+                    {% for k in range(evaluations[i][4]) %}
+                    <span style="color: orange;" class="fa fa-star checked"></span>
+                    {% endfor %}
+                    {% for k in range(5- evaluations[i][4] ) %}
+                    <span class="fa fa-star"></span>
+                    {% endfor %}
+                </div>
+                <div>
+                    <p> {{ evaluations[i][3] }} </p>
+                </div>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+{% endblock %}
