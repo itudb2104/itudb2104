@@ -9,7 +9,6 @@ itsdangerous==2.0.1
 Jinja2==3.0.1
 MarkupSafe==2.0.1
 ordereddict==1.1
-pandas==1.2.1
 bs4==0.0.1
 wikipedia==1.4.0
 passlib==1.7.4
