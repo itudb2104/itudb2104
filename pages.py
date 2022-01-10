@@ -317,7 +317,7 @@ def book(isbn):
     if 'username' in session:
         user = db.get_user_by_username(session['username'])
         rating = round(book[2])
-        author = db.get_author_by_id(book[6])[1]
+        author = db.get_author_by_id(book[6])
         category = db.get_category_by_id(book[10])[1]
         publisher = db.get_publisher_by_id(book[8])[1]
         is_in_user_library = db.is_in_user_library(user[0], book[0])
@@ -348,7 +348,7 @@ def add_to_library(user_id, book_id):
             book = db.get_book_by_id(book_id)
             description = get_description_by_isbn(book[7])
             rating = int(book[2])
-            author = db.get_author_by_id(book[6])[1]
+            author = db.get_author_by_id(book[6])
             category = db.get_category_by_id(book[10])[1]
             publisher = db.get_publisher_by_id(book[8])[1]
             source = session['source']
@@ -366,7 +366,9 @@ def add_to_library(user_id, book_id):
         evaluations = db.get_all_evaluations_by_book_id(book[0])
 
         commenters = [db.get_user_by_id(e[2]) for e in evaluations]
-        return render_template('book.html', book=book, evaluations=evaluations, commenters=commenters, publisher=publisher, rating=rating, author=author, category=category, description=description, user=user, book_suggestions_4=book_suggestions_4, authors_suggestions=authors_suggestions, is_in_user_library=True, is_in_user_requests=is_in_user_requests, is_evaluated=is_evaluated)
+
+        length = len(evaluations)
+        return render_template('book.html', book=book, length=length, evaluations=evaluations, commenters=commenters, publisher=publisher, rating=rating, author=author, category=category, description=description, user=user, book_suggestions_4=book_suggestions_4, authors_suggestions=authors_suggestions, is_in_user_library=True, is_in_user_requests=is_in_user_requests, is_evaluated=is_evaluated)
     return redirect(url_for('pages.index'))
 
 
@@ -379,7 +381,7 @@ def remove_from_library(user_id, book_id):
             book = db.get_book_by_id(book_id)
             description = get_description_by_isbn(book[7])
             rating = int(book[2])
-            author = db.get_author_by_id(book[6])[1]
+            author = db.get_author_by_id(book[6])
             category = db.get_category_by_id(book[10])[1]
             publisher = db.get_publisher_by_id(book[8])[1]
             is_in_user_requests = db.is_in_user_requests(user[0], book[0])
@@ -399,7 +401,9 @@ def remove_from_library(user_id, book_id):
         evaluations = db.get_all_evaluations_by_book_id(book[0])
 
         commenters = [db.get_user_by_id(e[2]) for e in evaluations]
-        return render_template('book.html', book=book, evaluations=evaluations, commenters=commenters, publisher=publisher, rating=rating, author=author, category=category, description=description, user=user, book_suggestions_4=book_suggestions_4, authors_suggestions=authors_suggestions, is_in_user_library=False, is_in_user_requests=is_in_user_requests, is_evaluated=is_evaluated)
+
+        length = len(evaluations)
+        return render_template('book.html', book=book, length=length, evaluations=evaluations, commenters=commenters, publisher=publisher, rating=rating, author=author, category=category, description=description, user=user, book_suggestions_4=book_suggestions_4, authors_suggestions=authors_suggestions, is_in_user_library=False, is_in_user_requests=is_in_user_requests, is_evaluated=is_evaluated)
     return redirect(url_for('pages.index'))
 
 
@@ -412,7 +416,7 @@ def add_to_requests(user_id, book_id):
             book = db.get_book_by_id(book_id)
             description = get_description_by_isbn(book[7])
             rating = int(book[2])
-            author = db.get_author_by_id(book[6])[1]
+            author = db.get_author_by_id(book[6])
             category = db.get_category_by_id(book[10])[1]
             publisher = db.get_publisher_by_id(book[8])[1]
             source = session['source']
@@ -433,7 +437,9 @@ def add_to_requests(user_id, book_id):
         evaluations = db.get_all_evaluations_by_book_id(book[0])
 
         commenters = [db.get_user_by_id(e[2]) for e in evaluations]
-        return render_template('book.html', book=book, evaluations=evaluations, commenters=commenters, publisher=publisher, rating=rating, author=author, category=category, description=description, user=user, book_suggestions_4=book_suggestions_4, authors_suggestions=authors_suggestions, is_in_user_requests=True, is_in_user_library=is_in_user_library, is_evaluated=is_evaluated)
+
+        length = len(evaluations)
+        return render_template('book.html', book=book, length=length, evaluations=evaluations, commenters=commenters, publisher=publisher, rating=rating, author=author, category=category, description=description, user=user, book_suggestions_4=book_suggestions_4, authors_suggestions=authors_suggestions, is_in_user_requests=True, is_in_user_library=is_in_user_library, is_evaluated=is_evaluated)
     return redirect(url_for('pages.index'))
 
 
@@ -446,7 +452,7 @@ def remove_from_requests(user_id, book_id):
             book = db.get_book_by_id(book_id)
             description = get_description_by_isbn(book[7])
             rating = int(book[2])
-            author = db.get_author_by_id(book[6])[1]
+            author = db.get_author_by_id(book[6])
             category = db.get_category_by_id(book[10])[1]
             publisher = db.get_publisher_by_id(book[8])[1]
             source = session['source']
@@ -466,7 +472,10 @@ def remove_from_requests(user_id, book_id):
         evaluations = db.get_all_evaluations_by_book_id(book[0])
 
         commenters = [db.get_user_by_id(e[2]) for e in evaluations]
-        return render_template('book.html', book=book, evaluations=evaluations, commenters=commenters, publisher=publisher, rating=rating, author=author, category=category, description=description, user=user, is_in_user_requests=False, is_in_user_library=is_in_user_library, book_suggestions_4=book_suggestions_4, authors_suggestions=authors_suggestions, is_evaluated=is_evaluated)
+
+        length = len(evaluations)
+
+        return render_template('book.html', book=book, length=length, evaluations=evaluations, commenters=commenters, publisher=publisher, rating=rating, author=author, category=category, description=description, user=user, is_in_user_requests=False, is_in_user_library=is_in_user_library, book_suggestions_4=book_suggestions_4, authors_suggestions=authors_suggestions, is_evaluated=is_evaluated)
     return redirect(url_for('pages.index'))
 
 
@@ -480,7 +489,7 @@ def evaluate_book(user_id, book_id):
         if is_evaluated:
             return redirect(url_for('pages.index'))
         description = get_description_by_isbn(str(book[7]))
-        author = db.get_author_by_id(book[6])[1]
+        author = db.get_author_by_id(book[6])
         category = db.get_category_by_id(book[10])[1]
         publisher = db.get_publisher_by_id(book[8])[1]
         average_rating = book[2]
@@ -512,7 +521,9 @@ def evaluate_book(user_id, book_id):
                 evaluations = db.get_all_evaluations_by_book_id(book[0])
 
                 commenters = [db.get_user_by_id(e[2]) for e in evaluations]
-                return render_template('book.html', book=book, evaluations=evaluations, commenters=commenters, book_suggestions_4=book_suggestions_4, authors_suggestions=authors_suggestions, description=description, author=author, category=category, publisher=publisher, rating=round(average_rating), user=user, is_in_user_library=is_in_user_library, is_in_user_requests=is_in_user_requests, is_evaluated=True)
+
+                length = len(evaluations)
+                return render_template('book.html', book=book, length=length, evaluations=evaluations, commenters=commenters, book_suggestions_4=book_suggestions_4, authors_suggestions=authors_suggestions, description=description, author=author, category=category, publisher=publisher, rating=round(average_rating), user=user, is_in_user_library=is_in_user_library, is_in_user_requests=is_in_user_requests, is_evaluated=True)
             return render_template('evaluate-book.html', user=user, book=book, author=author, category=category, publisher=publisher)
     return redirect(url_for('pages.index'))
 
